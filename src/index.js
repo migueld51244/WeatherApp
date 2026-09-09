@@ -10,6 +10,7 @@ const humidityP = document.querySelector(".humidity-p");
 const windP = document.querySelector(".wind-p");
 const timeP = document.querySelector(".time-p");
 const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
+const forecastArea = document.querySelector(".forecast-wrapper");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
@@ -34,6 +35,7 @@ searchButton.addEventListener("click", async () => {
   populateOverallStatus(data);
   populateDetailedStatus(data);
   populateLocationDescription(data);
+  generateForecast(data);
 });
 
 switchUnitBtn.addEventListener("click", (e) => {
@@ -100,4 +102,16 @@ function switchUnits() {
   } else if (temperatureP.textContent.includes("F")) {
     temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
   }
+}
+
+function generateForecast(data) {
+  data.days.forEach((day) => {
+    const dayWrapper = document.createElement("div");
+    const temperature = document.createElement("p");
+    const date = document.createElement("p");
+    temperature.textContent = day.temp;
+    date.textContent = day.datetime;
+    dayWrapper.append(date, temperature);
+    forecastArea.append(dayWrapper);
+  });
 }
