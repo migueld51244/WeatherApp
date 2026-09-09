@@ -75,7 +75,7 @@ function populateDetailedStatus(data) {
 
 function populateLocationDescription(data) {
   if (!data) return;
-  local.textContent = data.address;
+  local.textContent = data.resolvedAddress;
   localDesc.textContent = data.description;
 }
 
