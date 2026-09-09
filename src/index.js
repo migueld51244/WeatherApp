@@ -23,24 +23,23 @@ function getLocation() {
   return encodeURIComponent(location);
 }
 
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click",async () => {
   const location = getLocation();
-  getLocationData(location);
+  data = await getLocationData(location);
+  getIcon(data.currentConditions.icon);
 });
 
 async function getLocationData(location) {
   try {
-    console.log("Loading");
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT`,
     );
-    const data = await response.json();
-    console.log("Done!");
-    console.log(data);
-    local.textContent = data.address;
-    localDesc.textContent = data.description;
-    getIcon(data.currentConditions.icon);
-    return data;
+    const weatherData = await response.json();
+    console.log(weatherData);
+    local.textContent = weatherData.address;
+    localDesc.textContent = weatherData.description;
+    
+    return weatherData;
   } catch (error) {
     console.error(error);
   }
