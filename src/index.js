@@ -9,6 +9,7 @@ const temperatureP = document.querySelector(".temperature-p");
 const humidityP = document.querySelector(".humidity-p");
 const windP = document.querySelector(".wind-p");
 const timeP = document.querySelector(".time-p");
+const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
@@ -35,6 +36,10 @@ searchButton.addEventListener("click", async () => {
   populateLocationDescription(data);
 });
 
+switchUnitBtn.addEventListener("click", (e) => {
+  switchUnits();
+});
+
 async function getLocationData(location) {
   try {
     const response = await fetch(
@@ -50,7 +55,7 @@ async function getLocationData(location) {
 
 function populateOverallStatus(data) {
   getIcon(data.currentConditions.icon);
-  temperatureP.textContent = `Temperature: ${data.currentConditions.temp}`;
+  temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
 }
 
 function populateDetailedStatus(data) {
@@ -83,5 +88,16 @@ function getIcon(data) {
     statusIcon.src = snow;
   } else if (data === "wind") {
     statusIcon.src = wind;
+  }
+}
+
+function switchUnits() {
+  if (temperatureP.textContent.includes("C")) {
+    // Get temperature
+    const temp = data.currentConditions.temp;
+    const tempInFahrenheit = (temp * 1.8 + 32).toFixed(2);
+    temperatureP.textContent = `Temperature: ${tempInFahrenheit} ºF`;
+  } else if (temperatureP.textContent.includes("F")) {
+    temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
   }
 }
