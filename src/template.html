@@ -11,5 +11,35 @@
     />
     <title>Weather App</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1 class="page-title">
+        <span class="blue-word">Sky</span><span class="yellow-word">Light</span>
+      </h1>
+      <div class="search-container">
+        <label for="search-local">Search for a city</label>
+        <input type="text" name="" id="search-local">
+        <button type="button" class="search-location-btn"><img src="./assets/images/magnifier.png" alt=""></button>
+      </div>
+
+    </header>
+    <main class="container">
+      <div class="location-info-container">
+        <div class="overall-status">
+          <img class="status-icon" src="./assets/images/clear-night.png" alt="" class="weather-status-icon">
+        
+          <p class="temperature">Temperature</p>
+        </div>
+        <div detailed-status>
+          <p>Humidity</p>
+          <p>Wind Speed</p>
+          <p></p>
+        </div>
+        <div class="location-description">
+          <p class="local"></p>
+          <p class="local-desc"></p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

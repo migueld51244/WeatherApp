@@ -8,3 +8,7 @@ body {
   font-family: "DM Sans", "Inter", sans-serif;
   background-color: #fafafa;
 }
+
+header {
+  display: flex;
+}
