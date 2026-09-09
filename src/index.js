@@ -23,6 +23,7 @@ import snow from "./assets/images/snow.png";
 import wind from "./assets/images/fog.png";
 
 let data;
+let unit = 'celsius';
 
 function getLocation() {
   const location = locationInput.value;
