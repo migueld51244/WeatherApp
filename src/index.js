@@ -23,7 +23,7 @@ import snow from "./assets/images/snow.png";
 import wind from "./assets/images/fog.png";
 
 let data;
-let unit = 'celsius';
+let unit = null;
 
 function getLocation() {
   const location = locationInput.value;
@@ -95,13 +95,23 @@ function getIcon(data) {
 }
 
 function switchUnits() {
-  if (temperatureP.textContent.includes("C")) {
+  const dayTemp = document.querySelectorAll("day-temp");
+  if (!unit) return;
+  if (unit === "celsius") {
     // Get temperature
     const temp = data.currentConditions.temp;
-    const tempInFahrenheit = (temp * 1.8 + 32).toFixed(2);
+    const tempInFahrenheit = (temp * 1.8 + 32).toFixed(1);
     temperatureP.textContent = `Temperature: ${tempInFahrenheit} ºF`;
-  } else if (temperatureP.textContent.includes("F")) {
+    dayTemp.forEach((p) => {
+      p.textContent = `${tempInFahrenheit} ºF`;
+    });
+    unit = "fahrenheit";
+  } else if (unit === "fahrenheit") {
     temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
+    unit = "celsius";
+    dayTemp.forEach((p) => {
+      p.textContent = `${data.currentConditions.temp} ºC`;
+    });
   }
 }
 
@@ -111,7 +121,9 @@ function generateForecast(data) {
     const dayWrapper = document.createElement("div");
     dayWrapper.classList.add("day-wrapper");
     const temperature = document.createElement("p");
+    temperature.classList.add("day-temp");
     const date = document.createElement("p");
+    date.classList.add("day-date");
     temperature.textContent = day.temp;
     date.textContent = day.datetime;
     dayWrapper.append(date, temperature);
