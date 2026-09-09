@@ -45,11 +45,13 @@ switchUnitBtn.addEventListener("click", (e) => {
 });
 
 async function getLocationData(location) {
+  errorMessage.textContent = "";
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT&unitGroup=metric`,
     );
     if (!response.ok) {
+      errorMessage.textContent = "Location not found";
       throw new Error("Unable to fetch location data");
     }
     const weatherData = await response.json();
