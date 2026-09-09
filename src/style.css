@@ -11,4 +11,80 @@ body {
 
 header {
   display: flex;
+  background-color: #709aca;
+}
+
+.blue-word {
+  color: rgb(71, 71, 255);
+}
+
+.yellow-word {
+  color: rgb(255, 255, 99);
+}
+
+.container {
+  background-color: rgb(198, 190, 190);
+  margin: 2vw;
+  padding: 3vw;
+  border-radius: 10px;
+}
+
+.status-icon {
+  width: 10vw;
+}
+
+.location-info-container {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  font-weight: 400;
+  align-items: center;
+}
+
+.detailed-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vw;
+}
+
+.local {
+  font-size: 4vw;
+}
+
+.local::before {
+  content: "◉";
+  color: green;
+  font-size: 2rem;
+}
+
+.details-wrapper {
+  margin: 2vw;
+  border-radius: 10px;
+  height: 10%;
+  background-color: #7b6c6c;
+}
+
+.weeks-forecast {
+  background-color: #a5a0b3;
+  margin: 2vw;
+  border-radius: 10px;
+  min-height: 8vw;
+}
+
+.forecast-wrapper {
+  display: grid;
+  gap: 1vw;
+  padding: 1vw;
+}
+
+.day-wrapper {
+  padding: 2vw;
+  color: white;
+  border: 2px solid green;
+  min-width: 4vw;
+  min-height: 4vw;
+}
+
+.day-wrapper p {
+  padding: 1vw;
 }
