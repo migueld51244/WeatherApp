@@ -105,8 +105,10 @@ function switchUnits() {
 }
 
 function generateForecast(data) {
+  forecastArea.innerHTML = "";
   data.days.forEach((day) => {
     const dayWrapper = document.createElement("div");
+    dayWrapper.classList.add("day-wrapper");
     const temperature = document.createElement("p");
     const date = document.createElement("p");
     temperature.textContent = day.temp;
