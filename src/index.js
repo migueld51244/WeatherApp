@@ -5,6 +5,10 @@ const searchButton = document.querySelector(".search-location-btn");
 const local = document.querySelector("p.local");
 const localDesc = document.querySelector("p.local-desc");
 const statusIcon = document.querySelector(".status-icon");
+const temperatureP = document.querySelector(".temperature-p");
+const humidityP = document.querySelector(".humidity-p");
+const windP = document.querySelector(".wind-p");
+const timeP = document.querySelector(".time-p");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
@@ -23,26 +27,41 @@ function getLocation() {
   return encodeURIComponent(location);
 }
 
-searchButton.addEventListener("click",async () => {
+searchButton.addEventListener("click", async () => {
   const location = getLocation();
   data = await getLocationData(location);
-  getIcon(data.currentConditions.icon);
+  populateOverallStatus(data);
+  populateDetailedStatus(data);
+  populateLocationDescription(data);
 });
 
 async function getLocationData(location) {
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT&unitGroup=metric`,
     );
     const weatherData = await response.json();
     console.log(weatherData);
-    local.textContent = weatherData.address;
-    localDesc.textContent = weatherData.description;
-    
     return weatherData;
   } catch (error) {
     console.error(error);
   }
+}
+
+function populateOverallStatus(data) {
+  getIcon(data.currentConditions.icon);
+  temperatureP.textContent = `Temperature: ${data.currentConditions.temp}`;
+}
+
+function populateDetailedStatus(data) {
+  humidityP.textContent = `Humidity: ${data.currentConditions.humidity} %`;
+  windP.textContent = `Wind Speed: ${data.currentConditions.windspeed} km/h`;
+  timeP.textContent = `Time: ${data.currentConditions.datetime}`;
+}
+
+function populateLocationDescription(data) {
+  local.textContent = data.address;
+  localDesc.textContent = data.description;
 }
 
 function getIcon(data) {
