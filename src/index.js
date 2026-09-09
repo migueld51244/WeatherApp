@@ -11,6 +11,7 @@ const windP = document.querySelector(".wind-p");
 const timeP = document.querySelector(".time-p");
 const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 const forecastArea = document.querySelector(".forecast-wrapper");
+const errorMessage = document.querySelector(".error-message");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
