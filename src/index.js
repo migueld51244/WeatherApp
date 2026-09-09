@@ -48,6 +48,9 @@ async function getLocationData(location) {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT&unitGroup=metric`,
     );
+    if (!response.ok) {
+      throw new Error("Unable to fetch location data");
+    }
     const weatherData = await response.json();
     console.log(weatherData);
     return weatherData;
@@ -57,17 +60,20 @@ async function getLocationData(location) {
 }
 
 function populateOverallStatus(data) {
+  if (!data) return;
   getIcon(data.currentConditions.icon);
   temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
 }
 
 function populateDetailedStatus(data) {
+  if (!data) return;
   humidityP.textContent = `Humidity: ${data.currentConditions.humidity} %`;
   windP.textContent = `Wind Speed: ${data.currentConditions.windspeed} km/h`;
   timeP.textContent = `Time: ${data.currentConditions.datetime}`;
 }
 
 function populateLocationDescription(data) {
+  if (!data) return;
   local.textContent = data.address;
   localDesc.textContent = data.description;
 }
@@ -116,6 +122,7 @@ function switchUnits() {
 }
 
 function generateForecast(data) {
+  if (!data) return;
   forecastArea.innerHTML = "";
   data.days.forEach((day) => {
     const dayWrapper = document.createElement("div");
