@@ -24,7 +24,7 @@ const visibility = document.querySelector(".visibility-p");
 const pressure = document.querySelector(".pressure-p");
 const cloudCover = document.querySelector(".cloud-cover-p");
 
-const fullDayForecastArea = document.querySelector(".full-day-forecast");
+const fullDayWrapper = document.querySelector(".full-day-wrapper");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
@@ -175,7 +175,7 @@ function generateFullDayForecast(data) {
     container.append(icon, time, temp);
     fragment.append(container);
   }
-  fullDayForecastArea.append(fragment);
+  fullDayWrapper.append(fragment);
 }
 
 function generateWeatherDetails(data) {
