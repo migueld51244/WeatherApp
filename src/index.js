@@ -145,13 +145,17 @@ function generateForecast(data) {
   data.days.forEach((day) => {
     const dayWrapper = document.createElement("div");
     dayWrapper.classList.add("day-wrapper");
+    const icon = document.createElement("img");
+    getIcon(day.icon, icon);
     const temperature = document.createElement("p");
+    const minTemp = `Min: ${day.tempmin} ºC`;
+    const maxTemp = `Max: ${day.tempmax} ºC`;
     temperature.classList.add("day-temp");
     const date = document.createElement("p");
     date.classList.add("day-date");
-    temperature.textContent = day.temp;
+    temperature.textContent = `Temp: ${day.temp}`;
     date.textContent = day.datetime;
-    dayWrapper.append(date, temperature);
+    dayWrapper.append(icon, date, temperature, minTemp, maxTemp);
     forecastArea.append(dayWrapper);
   });
 }
