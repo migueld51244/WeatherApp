@@ -66,18 +66,15 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.weather-details-headline {
+.weather-details-headline, .full-day-headline, .multi-week-forecast {
   margin-left: 2vw;
 }
 
-.weeks-forecast {
+.forecast-wrapper {
   background-color: #a5a0b3;
   margin: 2vw;
   border-radius: 10px;
   min-height: 8vw;
-}
-
-.forecast-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1vw;
