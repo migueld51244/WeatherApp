@@ -49,6 +49,7 @@ searchButton.addEventListener("click", async () => {
   populateDetailedStatus(data);
   populateLocationDescription(data);
   generateForecast(data);
+  generateWeatherDetails(data);
 });
 
 switchUnitBtn.addEventListener("click", (e) => {
@@ -150,4 +151,18 @@ function generateForecast(data) {
     dayWrapper.append(date, temperature);
     forecastArea.append(dayWrapper);
   });
+}
+
+function generateWeatherDetails(data) {
+  if (!data) return;
+
+  sunset.textContent = `Sunset at: ${data.currentConditions.sunset}`;
+  sunrise.textContent = `Sunrise at: ${data.currentConditions.sunrise}`;
+  timezone.textContent = `Timezone: ${data.timezone}`;
+  windDir.textContent = `Wind Direction: ${data.currentConditions.winddir} º`;
+  windGust.textContent = `Wind Gust: ${data.currentConditions.windgust} km/s`;
+  uvIndex.textContent = `UV Index: ${data.currentConditions.uvindex}`;
+  visibility.textContent = `Visibility: ${data.currentConditions.visibility} km`
+  pressure.textContent = `Pressure: ${data.currentConditions.pressure} hPa`
+  cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover} %`
 }
