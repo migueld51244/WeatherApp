@@ -66,7 +66,9 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.weather-details-headline, .full-day-headline, .multi-week-forecast {
+.weather-details-headline,
+.full-day-headline,
+.multi-week-forecast {
   margin-left: 2vw;
 }
 
@@ -79,6 +81,26 @@ header {
   grid-template-columns: repeat(3, 1fr);
   gap: 1vw;
   padding: 1vw;
+}
+
+.full-day-forecast {
+  min-height: fit-content;
+}
+
+.day-item {
+  padding: 1vw;
+}
+
+.full-day-wrapper {
+  margin: 2vw;
+  overflow-x: scroll;
+  background-color: #fd33a1;
+  display: flex;
+  gap: 2vw;
+  img {
+    width: 100px;
+  }
+  border-radius: 10px;
 }
 
 .day-wrapper {
