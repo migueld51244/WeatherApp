@@ -162,11 +162,12 @@ function generateForecast(data) {
 
 function generateFullDayForecast(data) {
   if (!data) return;
-  fullDayWrapper.innerHTML = '';
+  fullDayWrapper.innerHTML = "";
   const fragment = document.createDocumentFragment();
   const weatherSource = data.days[0].hours;
   for (const hour of weatherSource) {
     const container = document.createElement("div");
+    container.classList.add("day-item");
     const temp = document.createElement("p");
     temp.textContent = `${hour.temp} ºC`;
     const time = document.createElement("p");
