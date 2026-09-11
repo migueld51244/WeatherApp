@@ -13,6 +13,17 @@ const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 const forecastArea = document.querySelector(".forecast-wrapper");
 const errorMessage = document.querySelector(".error-message");
 
+// Weather details
+const sunset = document.querySelector(".sunset-p");
+const sunrise = document.querySelector(".sunrise-p");
+const timezone = document.querySelector(".timezone-p");
+const windDir = document.querySelector(".wind-dir-p");
+const windGust = document.querySelector(".wind-gust-p");
+const uvIndex = document.querySelector(".uv-index-p");
+const visibility = document.querySelector(".visibility-p");
+const pressure = document.querySelector(".pressure-p");
+const cloudCover = document.querySelector(".cloud-cover-p");
+
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
 import cloudy from "./assets/images/cloudy.png";
