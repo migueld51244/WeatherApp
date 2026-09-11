@@ -66,6 +66,10 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.weather-details-headline {
+  margin-left: 2vw;
+}
+
 .weeks-forecast {
   background-color: #a5a0b3;
   margin: 2vw;
