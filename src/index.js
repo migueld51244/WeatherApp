@@ -4,7 +4,7 @@ const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
 const local = document.querySelector("p.local");
 const localDesc = document.querySelector("p.local-desc");
-const statusIcon = document.querySelector(".status-icon");
+const image = document.querySelector(".status-icon");
 const temperatureP = document.querySelector(".temperature-p");
 const humidityP = document.querySelector(".humidity-p");
 const windP = document.querySelector(".wind-p");
@@ -23,6 +23,8 @@ const uvIndex = document.querySelector(".uv-index-p");
 const visibility = document.querySelector(".visibility-p");
 const pressure = document.querySelector(".pressure-p");
 const cloudCover = document.querySelector(".cloud-cover-p");
+
+const fullDayForecastArea = document.querySelector(".full-day-forecast");
 
 import clearDay from "./assets/images/clear-day.png";
 import clearNight from "./assets/images/clear-night.png";
@@ -50,6 +52,7 @@ searchButton.addEventListener("click", async () => {
   populateLocationDescription(data);
   generateForecast(data);
   generateWeatherDetails(data);
+  generateFullDayForecast(data);
 });
 
 switchUnitBtn.addEventListener("click", (e) => {
@@ -76,7 +79,7 @@ async function getLocationData(location) {
 
 function populateOverallStatus(data) {
   if (!data) return;
-  getIcon(data.currentConditions.icon);
+  getIcon(data.currentConditions.icon, image);
   temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
 }
 
@@ -93,25 +96,25 @@ function populateLocationDescription(data) {
   localDesc.textContent = data.description;
 }
 
-function getIcon(data) {
+function getIcon(data, image) {
   if (data === "clear-day") {
-    statusIcon.src = clearDay;
+    image.src = clearDay;
   } else if (data === "clear-night") {
-    statusIcon.src = clearNight;
+    image.src = clearNight;
   } else if (data === "cloudy") {
-    statusIcon.src = cloudy;
+    image.src = cloudy;
   } else if (data === "fog") {
-    statusIcon.src = fog;
+    image.src = fog;
   } else if (data === "partly-cloudy-day") {
-    statusIcon.src = partlyCloudyDay;
+    image.src = partlyCloudyDay;
   } else if (data === "partly-cloudy-night") {
-    statusIcon.src = partlyCloudyNight;
+    image.src = partlyCloudyNight;
   } else if (data === "rain") {
-    statusIcon.src = rain;
+    image.src = rain;
   } else if (data === "snow") {
-    statusIcon.src = snow;
+    image.src = snow;
   } else if (data === "wind") {
-    statusIcon.src = wind;
+    image.src = wind;
   }
 }
 
@@ -153,6 +156,24 @@ function generateForecast(data) {
   });
 }
 
+function generateFullDayForecast(data) {
+  if (!data) return;
+  const fragment = document.createDocumentFragment();
+  const weatherSource = data.days[0].hours;
+  for (const hour of weatherSource) {
+    const container = document.createElement("div");
+    const temp = document.createElement("p");
+    temp.textContent = `${hour.temp} ºC`;
+    const time = document.createElement("p");
+    time.textContent = `${hour.datetime}`;
+    const icon = document.createElement("img");
+    getIcon(hour.icon, icon);
+    container.append(icon, time, temp);
+    fragment.append(container);
+  }
+  fullDayForecastArea.append(fragment);
+}
+
 function generateWeatherDetails(data) {
   if (!data) return;
 
@@ -162,7 +183,7 @@ function generateWeatherDetails(data) {
   windDir.textContent = `Wind Direction: ${data.currentConditions.winddir} º`;
   windGust.textContent = `Wind Gust: ${data.currentConditions.windgust} km/s`;
   uvIndex.textContent = `UV Index: ${data.currentConditions.uvindex}`;
-  visibility.textContent = `Visibility: ${data.currentConditions.visibility} km`
-  pressure.textContent = `Pressure: ${data.currentConditions.pressure} hPa`
-  cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover} %`
+  visibility.textContent = `Visibility: ${data.currentConditions.visibility} km`;
+  pressure.textContent = `Pressure: ${data.currentConditions.pressure} hPa`;
+  cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover} %`;
 }
