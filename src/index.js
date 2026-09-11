@@ -162,6 +162,7 @@ function generateForecast(data) {
 
 function generateFullDayForecast(data) {
   if (!data) return;
+  fullDayWrapper.innerHTML = '';
   const fragment = document.createDocumentFragment();
   const weatherSource = data.days[0].hours;
   for (const hour of weatherSource) {
