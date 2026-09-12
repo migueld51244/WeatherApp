@@ -78,7 +78,7 @@ header {
   border-radius: 10px;
   min-height: 8vw;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1vw;
   padding: 1vw;
 }
