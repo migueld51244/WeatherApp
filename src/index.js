@@ -1,4 +1,5 @@
 import "./style.css";
+import { parse, format } from "date-fns";
 
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
@@ -171,7 +172,12 @@ function generateFullDayForecast(data) {
     const temp = document.createElement("p");
     temp.textContent = `${hour.temp} ºC`;
     const time = document.createElement("p");
-    time.textContent = `${hour.datetime}`;
+    // Parse and format hours to 12 Hour format
+    const hours = hour.datetime; // 24 Hour Format
+    const parsedHour = parse(hours, "HH:mm:ss", new Date());
+    const formattedHour = format(parsedHour, "hh:mm a");
+    time.textContent = `${formattedHour}`;
+
     const icon = document.createElement("img");
     getIcon(hour.icon, icon);
     container.append(icon, time, temp);
