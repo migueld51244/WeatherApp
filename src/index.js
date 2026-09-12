@@ -148,6 +148,10 @@ function generateForecast(data) {
     dayWrapper.classList.add("day-wrapper");
     const icon = document.createElement("img");
     getIcon(day.icon, icon);
+    const dayInfoWrapper = document.createElement("div");
+    dayInfoWrapper.classList.add("day-info-wrapper");
+    const temperatureWrapper = document.createElement("div");
+    temperatureWrapper.classList.add("temperature-wrapper");
     const temperature = document.createElement("p");
     const minTemp = document.createElement("p");
     const maxTemp = document.createElement("p");
@@ -158,7 +162,9 @@ function generateForecast(data) {
     date.classList.add("day-date");
     temperature.textContent = `Temp: ${day.temp}`;
     date.textContent = day.datetime;
-    dayWrapper.append(icon, date, temperature, minTemp, maxTemp);
+    temperatureWrapper.append(minTemp, temperature, maxTemp);
+    dayInfoWrapper.append(date, temperatureWrapper);
+    dayWrapper.append(icon, dayInfoWrapper);
     forecastArea.append(dayWrapper);
   });
 }
