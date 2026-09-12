@@ -61,7 +61,7 @@ header {
   margin: 2vw;
   border-radius: 10px;
   height: 10%;
-  background-color: #7b6c6c;
+  background-color: #d2c0c0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -81,6 +81,17 @@ header {
   grid-template-columns: repeat(3, 1fr);
   gap: 1vw;
   padding: 1vw;
+}
+
+.info-wrapper {
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+  align-items: center;
+  p {
+    font-size: clamp(10px, 1vw, 2rem);
+  }
 }
 
 .full-day-forecast {
