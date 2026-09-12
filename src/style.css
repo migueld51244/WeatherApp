@@ -78,7 +78,7 @@ header {
   border-radius: 10px;
   min-height: 8vw;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1vw;
   padding: 1vw;
 }
@@ -119,13 +119,31 @@ header {
 }
 
 .day-wrapper {
+  background-color: #213f43;
   padding: 2vw;
   color: white;
-  border: 2px solid green;
+  border-radius: 15px;
   min-width: 4vw;
   min-height: 4vw;
+  img {
+    height: 100px;
+  }
+  display: flex;
+}
+
+.day-info-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.temperature-wrapper {
+  display: flex;
 }
 
 .day-wrapper p {
   padding: 1vw;
+}
+
+.day-date {
+  text-align: center;
 }
