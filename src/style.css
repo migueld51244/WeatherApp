@@ -68,6 +68,8 @@ header {
 
 .headline {
   margin-left: 2vw;
+  font-size: clamp(1rem, 1.6vw, 3rem);
+  font-weight: 500;
 }
 
 .forecast-wrapper {
