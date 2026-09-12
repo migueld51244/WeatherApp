@@ -149,8 +149,10 @@ function generateForecast(data) {
     const icon = document.createElement("img");
     getIcon(day.icon, icon);
     const temperature = document.createElement("p");
-    const minTemp = `Min: ${day.tempmin} ºC`;
-    const maxTemp = `Max: ${day.tempmax} ºC`;
+    const minTemp = document.createElement("p");
+    const maxTemp = document.createElement("p");
+    minTemp.textContent = `Min: ${day.tempmin} ºC`;
+    maxTemp.textContent = `Max: ${day.tempmax} ºC`;
     temperature.classList.add("day-temp");
     const date = document.createElement("p");
     date.classList.add("day-date");
