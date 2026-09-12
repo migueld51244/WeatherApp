@@ -161,7 +161,11 @@ function generateForecast(data) {
     const date = document.createElement("p");
     date.classList.add("day-date");
     temperature.textContent = `Temp: ${day.temp}`;
-    date.textContent = day.datetime;
+    // Parse and format date to dd-MM-yyyy format
+    const dateTime = day.datetime; // yyyy-MM-dd
+    const parsedDate = parse(dateTime, "yyyy-MM-dd", new Date());
+    const formattedDate = format(parsedDate, "dd-MM-yyyy");
+    date.textContent = formattedDate;
     temperatureWrapper.append(minTemp, temperature, maxTemp);
     dayInfoWrapper.append(date, temperatureWrapper);
     dayWrapper.append(icon, dayInfoWrapper);
