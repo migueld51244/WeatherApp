@@ -66,9 +66,7 @@ header {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.weather-details-headline,
-.full-day-headline,
-.multi-week-forecast-headline {
+.headline {
   margin-left: 2vw;
 }
 
