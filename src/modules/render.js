@@ -8,7 +8,7 @@ import partlyCloudyDay from "../assets/images/partly-cloudy-day.png";
 import partlyCloudyNight from "../assets/images/partly-cloudy-night.png";
 import rain from "../assets/images/rain.png";
 import snow from "../assets/images/snow.png";
-import wind from "../assets/images/fog.png";
+import wind from "../assets/images/wind.png";
 import { unit } from "../index.js";
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
