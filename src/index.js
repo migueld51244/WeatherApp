@@ -38,7 +38,7 @@ import snow from "./assets/images/snow.png";
 import wind from "./assets/images/fog.png";
 
 let data;
-let unit = null;
+let unit = "celsius";
 
 function getLocation() {
   const location = locationInput.value;
@@ -210,4 +210,10 @@ function generateWeatherDetails(data) {
   visibility.textContent = `Visibility: ${data.currentConditions.visibility} km`;
   pressure.textContent = `Pressure: ${data.currentConditions.pressure} hPa`;
   cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover} %`;
+}
+
+function formatTemperature(temp) {
+  const convertedTemp = unit === "fahrenheit" ? value * 1.8 + 32 : value;
+  const symbol = unit === "fahrenheit" ? "ºF" : "ºC";
+  return `${convertedTemp} ${symbol}`;
 }
