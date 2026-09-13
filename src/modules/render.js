@@ -145,7 +145,7 @@ function getIcon(data, image) {
 
 function formatTemperature(temp) {
   const convertedTemp =
-    unit === "fahrenheit" ? (temp * 1.8 + 32).toFixed(1) : temp;
+    unit === "fahrenheit" ? +(temp * 1.8 + 32).toFixed(1) : temp;
   const symbol = unit === "fahrenheit" ? "ºF" : "ºC";
   return `${convertedTemp} ${symbol}`;
 }
