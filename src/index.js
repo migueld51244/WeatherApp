@@ -119,7 +119,9 @@ function getIcon(data, image) {
   }
 }
 
-function switchUnits() {}
+function switchUnits() {
+  unit = unit === "celsius" ? "fahrenheit" : "celsius";
+}
 
 function generateForecast(data) {
   if (!data) return;
