@@ -81,7 +81,7 @@ async function getLocationData(location) {
 function populateOverallStatus(data) {
   if (!data) return;
   getIcon(data.currentConditions.icon, image);
-  temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
+  temperatureP.textContent = `Temperature: ${formatTemperature(data.currentConditions.temp)}`;
 }
 
 function populateDetailedStatus(data) {
@@ -120,24 +120,7 @@ function getIcon(data, image) {
 }
 
 function switchUnits() {
-  const dayTemp = document.querySelectorAll("day-temp");
-  if (!unit) return;
-  if (unit === "celsius") {
-    // Get temperature
-    const temp = data.currentConditions.temp;
-    const tempInFahrenheit = (temp * 1.8 + 32).toFixed(1);
-    temperatureP.textContent = `Temperature: ${tempInFahrenheit} ºF`;
-    dayTemp.forEach((p) => {
-      p.textContent = `${tempInFahrenheit} ºF`;
-    });
-    unit = "fahrenheit";
-  } else if (unit === "fahrenheit") {
-    temperatureP.textContent = `Temperature: ${data.currentConditions.temp} ºC`;
-    unit = "celsius";
-    dayTemp.forEach((p) => {
-      p.textContent = `${data.currentConditions.temp} ºC`;
-    });
-  }
+
 }
 
 function generateForecast(data) {
@@ -155,12 +138,12 @@ function generateForecast(data) {
     const temperature = document.createElement("p");
     const minTemp = document.createElement("p");
     const maxTemp = document.createElement("p");
-    minTemp.textContent = `Min: ${day.tempmin} ºC`;
-    maxTemp.textContent = `Max: ${day.tempmax} ºC`;
+    minTemp.textContent = `Min: ${formatTemperature(day.tempmin)}`;
+    maxTemp.textContent = `Max: ${formatTemperature(day.tempmax)}`;
     temperature.classList.add("day-temp");
     const date = document.createElement("p");
     date.classList.add("day-date");
-    temperature.textContent = `Temp: ${day.temp}`;
+    temperature.textContent = `Temp: ${formatTemperature(day.temp)}`;
     // Parse and format date to dd-MM-yyyy format
     const dateTime = day.datetime; // yyyy-MM-dd
     const parsedDate = parse(dateTime, "yyyy-MM-dd", new Date());
@@ -182,7 +165,7 @@ function generateFullDayForecast(data) {
     const container = document.createElement("div");
     container.classList.add("day-item");
     const temp = document.createElement("p");
-    temp.textContent = `${hour.temp} ºC`;
+    temp.textContent = `${formatTemperature(hour.temp)}`;
     const time = document.createElement("p");
     // Parse and format hours to 12 Hour format
     const hours = hour.datetime; // 24 Hour Format
