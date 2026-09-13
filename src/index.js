@@ -119,9 +119,7 @@ function getIcon(data, image) {
   }
 }
 
-function switchUnits() {
-
-}
+function switchUnits() {}
 
 function generateForecast(data) {
   if (!data) return;
@@ -196,7 +194,8 @@ function generateWeatherDetails(data) {
 }
 
 function formatTemperature(temp) {
-  const convertedTemp = unit === "fahrenheit" ? temp * 1.8 + 32 : temp;
+  const convertedTemp =
+    unit === "fahrenheit" ? (temp * 1.8 + 32).toFixed(1) : temp;
   const symbol = unit === "fahrenheit" ? "ºF" : "ºC";
   return `${convertedTemp} ${symbol}`;
 }
