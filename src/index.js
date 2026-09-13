@@ -196,7 +196,7 @@ function generateWeatherDetails(data) {
 }
 
 function formatTemperature(temp) {
-  const convertedTemp = unit === "fahrenheit" ? value * 1.8 + 32 : value;
+  const convertedTemp = unit === "fahrenheit" ? temp * 1.8 + 32 : temp;
   const symbol = unit === "fahrenheit" ? "ºF" : "ºC";
   return `${convertedTemp} ${symbol}`;
 }
