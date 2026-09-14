@@ -15,12 +15,12 @@ const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 
 const iconNames = {
-  clearDay: "clear-day.png",
-  clearNight: "clear-night.png",
+  "clear-day": "clear-day.png",
+  "clear-night": "clear-night.png",
   cloudy: "cloudy.png",
   fog: "fog.png",
-  partlyCloudyDay: "partly-cloudy-day.png",
-  partlyCloudyNight: "partly-cloudy-night.png",
+  "partly-cloudy-day": "partly-cloudy-day.png",
+  "partly-cloudy-night": "partly-cloudy-night.png",
   rain: "rain.png",
   snow: "snow.png",
   wind: "wind.png",
@@ -31,26 +31,8 @@ async function retrieveIcon(iconName, image) {
   image.src = icon.default;
 }
 
-function getIcon(data, image) {
-  if (data === "clear-day") {
-    retrieveIcon(iconNames.clearDay, image);
-  } else if (data === "clear-night") {
-    retrieveIcon(iconNames.clearNight, image);
-  } else if (data === "cloudy") {
-    retrieveIcon(iconNames.cloudy, image);
-  } else if (data === "fog") {
-    retrieveIcon(iconNames.fog, image);
-  } else if (data === "partly-cloudy-day") {
-    retrieveIcon(iconNames.partlyCloudyDay, image);
-  } else if (data === "partly-cloudy-night") {
-    retrieveIcon(iconNames.partlyCloudyNight, image);
-  } else if (data === "rain") {
-    retrieveIcon(iconNames.rain, image);
-  } else if (data === "snow") {
-    retrieveIcon(iconNames.snow, image);
-  } else if (data === "wind") {
-    retrieveIcon(iconNames.wind, image);
-  }
+function getIcon(name, image) {
+  retrieveIcon(iconNames[name], image)
 }
 
 // Weather details
