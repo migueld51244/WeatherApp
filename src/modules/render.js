@@ -1,14 +1,4 @@
 import { parse, format } from "date-fns";
-
-import clearDay from "../assets/images/clear-day.png";
-import clearNight from "../assets/images/clear-night.png";
-import cloudy from "../assets/images/cloudy.png";
-import fog from "../assets/images/fog.png";
-import partlyCloudyDay from "../assets/images/partly-cloudy-day.png";
-import partlyCloudyNight from "../assets/images/partly-cloudy-night.png";
-import rain from "../assets/images/rain.png";
-import snow from "../assets/images/snow.png";
-import wind from "../assets/images/wind.png";
 import { unit } from "../index.js";
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
@@ -24,7 +14,44 @@ const forecastArea = document.querySelector(".forecast-wrapper");
 const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 
+const iconNames = {
+  clearDay: "clear-day.png",
+  clearNight: "clear-night.png",
+  cloudy: "cloudy.png",
+  fog: "fog.png",
+  partlyCloudyDay: "partly-cloudy-day.png",
+  partlyCloudyNight: "partly-cloudy-night.png",
+  rain: "rain.png",
+  snow: "snow.png",
+  wind: "wind.png",
+};
 
+async function retrieveIcon(iconName, image) {
+  const icon = await import(`../assets/images/${iconName}`);
+  image.src = icon.default;
+}
+
+function getIcon(data, image) {
+  if (data === "clear-day") {
+    retrieveIcon(iconNames.clearDay, image);
+  } else if (data === "clear-night") {
+    retrieveIcon(iconNames.clearNight, image);
+  } else if (data === "cloudy") {
+    retrieveIcon(iconNames.cloudy, image);
+  } else if (data === "fog") {
+    retrieveIcon(iconNames.fog, image);
+  } else if (data === "partly-cloudy-day") {
+    retrieveIcon(iconNames.partlyCloudyDay, image);
+  } else if (data === "partly-cloudy-night") {
+    retrieveIcon(iconNames.partlyCloudyNight, image);
+  } else if (data === "rain") {
+    retrieveIcon(iconNames.rain, image);
+  } else if (data === "snow") {
+    retrieveIcon(iconNames.snow, image);
+  } else if (data === "wind") {
+    retrieveIcon(iconNames.wind, image);
+  }
+}
 
 // Weather details
 const sunset = document.querySelector(".sunset-p");
@@ -120,27 +147,6 @@ function populateDetailedStatus(data) {
   humidityP.textContent = `Humidity: ${data.currentConditions.humidity} %`;
   windP.textContent = `Wind Speed: ${data.currentConditions.windspeed} km/h`;
   timeP.textContent = `Time: ${data.currentConditions.datetime}`;
-}
-function getIcon(data, image) {
-  if (data === "clear-day") {
-    image.src = clearDay;
-  } else if (data === "clear-night") {
-    image.src = clearNight;
-  } else if (data === "cloudy") {
-    image.src = cloudy;
-  } else if (data === "fog") {
-    image.src = fog;
-  } else if (data === "partly-cloudy-day") {
-    image.src = partlyCloudyDay;
-  } else if (data === "partly-cloudy-night") {
-    image.src = partlyCloudyNight;
-  } else if (data === "rain") {
-    image.src = rain;
-  } else if (data === "snow") {
-    image.src = snow;
-  } else if (data === "wind") {
-    image.src = wind;
-  }
 }
 
 function formatTemperature(temp) {
