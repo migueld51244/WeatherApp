@@ -1,6 +1,6 @@
 import "./style.css";
 import { parse, format } from "date-fns";
-import  render  from "./modules/render.js";
+import render from "./modules/render.js";
 
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
@@ -28,10 +28,14 @@ const cloudCover = document.querySelector(".cloud-cover-p");
 
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 
+const state = {
+  data: undefined,
+  unit: "celsius",
+};
 
-
-let data;
-export let unit = "celsius";
+export function getState() {
+  return state;
+}
 
 function getLocation() {
   const location = locationInput.value;
@@ -40,8 +44,8 @@ function getLocation() {
 
 searchButton.addEventListener("click", async () => {
   const location = getLocation();
-  data = await getLocationData(location);
-  render(data);
+  getState().data = await getLocationData(location);
+  render(getState().data);
 });
 
 switchUnitBtn.addEventListener("click", (e) => {
@@ -66,11 +70,7 @@ async function getLocationData(location) {
   }
 }
 
-
-
 function switchUnits() {
-  unit = unit === "celsius" ? "fahrenheit" : "celsius";
-  render(data);
+  getState().unit = state.unit === "celsius" ? "fahrenheit" : "celsius";
+  render(getState().data);
 }
-
-

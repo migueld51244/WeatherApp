@@ -1,5 +1,6 @@
 import { parse, format } from "date-fns";
-import { unit } from "../index.js";
+import { getState } from "../index.js";
+
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
 const local = document.querySelector("p.local");
@@ -32,7 +33,7 @@ async function retrieveIcon(iconName, image) {
 }
 
 function getIcon(name, image) {
-  retrieveIcon(iconNames[name], image)
+  retrieveIcon(iconNames[name], image);
 }
 
 // Weather details
@@ -133,8 +134,8 @@ function populateDetailedStatus(data) {
 
 function formatTemperature(temp) {
   const convertedTemp =
-    unit === "fahrenheit" ? +(temp * 1.8 + 32).toFixed(1) : temp;
-  const symbol = unit === "fahrenheit" ? "ºF" : "ºC";
+    getState().unit === "fahrenheit" ? +(temp * 1.8 + 32).toFixed(1) : temp;
+  const symbol = getState().unit === "fahrenheit" ? "ºF" : "ºC";
   return `${convertedTemp} ${symbol}`;
 }
 
