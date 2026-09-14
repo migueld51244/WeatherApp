@@ -9,23 +9,36 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" sizes="32x32" href="./assets/images/favicon.png" type="image/png">
+    <link
+      rel="shortcut icon"
+      sizes="32x32"
+      href="./assets/images/favicon.png"
+      type="image/png"
+    />
     <title>Weather App</title>
   </head>
   <body>
     <header>
-      <h1 class="page-title">
-        <span class="blue-word">Sky</span><span class="yellow-word">Light</span>
-      </h1>
-      <button class="unit-switcher-btn" type="button">Switch Units</button>
+      
+      <div class="page-title-controls">
+      <a href="index.html">
+        <h1 class="page-title">
+          <span class="blue-word">Sky</span
+          ><span class="yellow-word">Light</span>
+        </h1>
+      </a>  
+        <button class="unit-switcher-btn" type="button">Switch Units</button>
+      </div>
       <div class="search-container">
-        <label for="search-local">Search for a city</label>
-        <input type="text" name="" id="search-local" />
+        <div class="search-box">
+          <label for="search-local">Search for a city</label>
+          <input type="text" name="location" id="search-local" />
+          <span class="error-message"></span>
+        </div>
         <button type="button" class="search-location-btn">
           <img src="./assets/images/magnifier.png" alt="" />
         </button>
       </div>
-      <span class="error-message"></span>
     </header>
     <main class="container">
       <div class="location-info-container">
@@ -75,7 +88,9 @@
       <div class="full-day-wrapper"></div>
     </article>
     <article class="weeks-forecast">
-      <span class="multi-week-forecast-headline headline">15 Days Forecast</span>
+      <span class="multi-week-forecast-headline headline"
+        >15 Days Forecast</span
+      >
       <div class="forecast-wrapper"></div>
     </article>
   </body>
