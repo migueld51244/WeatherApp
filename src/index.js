@@ -42,7 +42,16 @@ function getLocation() {
   return encodeURIComponent(location);
 }
 
+
+// Event listeners
 searchButton.addEventListener("click", async () => {
+  const location = getLocation();
+  getState().data = await getLocationData(location);
+  render(getState().data);
+});
+
+locationInput.addEventListener("keydown", async (e) => {
+  if(e.key !== "Enter") return;
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
