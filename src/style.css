@@ -252,3 +252,11 @@ label[for="search-local"] {
   border-radius: 10px;
   color: white;
 }
+
+/* Intro Message */
+.intro-message {
+  font-size: 3.25vw;
+  text-align: center;
+  margin-top: clamp(1.2rem, 3vw, 4rem);
+  font-weight: 500;
+}
