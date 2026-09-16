@@ -32,7 +32,7 @@
       <form class="search-container">
         <div class="search-box">
           <label for="search-local">Search for a city</label>
-          <input type="text" name="location" id="search-local" required/>
+          <input type="text" name="location" id="search-local" required />
           <span class="error-message"></span>
         </div>
         <button type="submit" class="search-location-btn">
@@ -40,59 +40,61 @@
         </button>
       </form>
     </header>
-    <main class="container">
-      <div class="location-info-container">
-        <div class="overall-status">
-          <img
-            class="status-icon"
-            src="./assets/images/clear-night.png"
-            alt=""
-            class="weather-status-icon"
-          />
+    <div class="page-content">
+      <main class="container">
+        <div class="location-info-container">
+          <div class="overall-status">
+            <img
+              class="status-icon"
+              src="./assets/images/clear-night.png"
+              alt=""
+              class="weather-status-icon"
+            />
 
-          <p class="temperature-p">Temperature:</p>
+            <p class="temperature-p">Temperature:</p>
+          </div>
+          <div class="detailed-status">
+            <p class="humidity-p">Humidity:</p>
+            <p class="wind-p">Wind Speed:</p>
+            <p class="time-p">Time:</p>
+          </div>
+          <div class="location-description">
+            <p class="local"></p>
+            <p class="local-desc"></p>
+          </div>
         </div>
-        <div class="detailed-status">
-          <p class="humidity-p">Humidity:</p>
-          <p class="wind-p">Wind Speed:</p>
-          <p class="time-p">Time:</p>
+      </main>
+      <article class="day-details">
+        <span class="weather-details-headline headline">Weather Details</span>
+        <div class="details-wrapper">
+          <div class="info-wrapper">
+            <p class="sunset-p">Sunset</p>
+            <p class="sunrise-p">Sunrises</p>
+            <p class="timezone-p">Timezone</p>
+          </div>
+          <div class="info-wrapper">
+            <p class="wind-dir-p">Wind Direction: º</p>
+            <p class="wind-gust-p">Wind gust m/s</p>
+            <p class="uv-index-p">UV Index</p>
+          </div>
+          <div class="info-wrapper">
+            <p class="visibility-p">Visibility</p>
+            <p class="pressure-p">Pressure</p>
+            <p class="cloud-cover-p">Cloud cover %</p>
+          </div>
         </div>
-        <div class="location-description">
-          <p class="local"></p>
-          <p class="local-desc"></p>
-        </div>
-      </div>
-    </main>
-    <article class="day-details">
-      <span class="weather-details-headline headline">Weather Details</span>
-      <div class="details-wrapper">
-        <div class="info-wrapper">
-          <p class="sunset-p">Sunset</p>
-          <p class="sunrise-p">Sunrises</p>
-          <p class="timezone-p">Timezone</p>
-        </div>
-        <div class="info-wrapper">
-          <p class="wind-dir-p">Wind Direction: º</p>
-          <p class="wind-gust-p">Wind gust m/s</p>
-          <p class="uv-index-p">UV Index</p>
-        </div>
-        <div class="info-wrapper">
-          <p class="visibility-p">Visibility</p>
-          <p class="pressure-p">Pressure</p>
-          <p class="cloud-cover-p">Cloud cover %</p>
-        </div>
-      </div>
-    </article>
-    <article class="full-day-forecast">
-      <span class="full-day-headline headline">24-Hours Forecast</span>
-      <div class="full-day-wrapper"></div>
-    </article>
-    <article class="weeks-forecast">
-      <span class="multi-week-forecast-headline headline"
-        >15 Days Forecast</span
-      >
-      <div class="forecast-wrapper"></div>
-    </article>
+      </article>
+      <article class="full-day-forecast">
+        <span class="full-day-headline headline">24-Hours Forecast</span>
+        <div class="full-day-wrapper"></div>
+      </article>
+      <article class="weeks-forecast">
+        <span class="multi-week-forecast-headline headline"
+          >15 Days Forecast</span
+        >
+        <div class="forecast-wrapper"></div>
+      </article>
+    </div>
 
     <!-- Loading screen template -->
     <template class="loading-screen-template">
