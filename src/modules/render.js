@@ -1,5 +1,5 @@
 import { parse, format } from "date-fns";
-import { getState } from "../index.js";
+import { getState } from "./app.js";
 
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
@@ -151,6 +151,10 @@ function updateCurrentUnit(unit) {
 }
 
 function render(data) {
+  if (data === undefined) {
+    document.querySelector(".page-content").style.display = "none";
+    
+  }
   generateForecast(data);
   generateFullDayForecast(data);
   generateWeatherDetails(data);
