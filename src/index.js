@@ -64,6 +64,8 @@ switchUnitBtn.addEventListener("click", (e) => {
 });
 
 async function getLocationData(location) {
+  // Hide message to clear previous errors
+  errorMessage.style.display = "none";
   errorMessage.textContent = "";
   // Display loading animation
   const loadingScreen = loadingTemplate.content.cloneNode(true);
@@ -73,6 +75,7 @@ async function getLocationData(location) {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT&unitGroup=metric`,
     );
     if (!response.ok) {
+      errorMessage.style.display = "block";
       errorMessage.textContent = "Location not found";
       throw new Error("Unable to fetch location data");
     }
