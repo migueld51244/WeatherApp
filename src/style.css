@@ -243,3 +243,12 @@ label[for="search-local"] {
 .loading-text {
   font-size: clamp(10px, 2vw, 2rem);
 }
+
+/* Error message */
+.error-message {
+  display: none;
+  background-color: rgb(211, 46, 46);
+  padding: 0.2vw 0.5vw;
+  border-radius: 10px;
+  color: white;
+}
