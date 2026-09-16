@@ -14,6 +14,7 @@ const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 const forecastArea = document.querySelector(".forecast-wrapper");
 const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
+const currentUnitP = document.querySelector(".current-unit-p");
 
 const iconNames = {
   "clear-day": "clear-day.png",
@@ -145,6 +146,10 @@ function populateLocationDescription(data) {
   localDesc.textContent = data.description;
 }
 
+function updateCurrentUnit(unit) {
+  currentUnitP.textContent = `Current unit: ${unit}`;
+}
+
 function render(data) {
   generateForecast(data);
   generateFullDayForecast(data);
@@ -154,4 +159,4 @@ function render(data) {
   populateOverallStatus(data);
 }
 
-export default render;
+export { render, updateCurrentUnit };

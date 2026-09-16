@@ -1,6 +1,6 @@
 import "./style.css";
 import { parse, format } from "date-fns";
-import render from "./modules/render.js";
+import { render, updateCurrentUnit } from "./modules/render.js";
 
 const locationInput = document.querySelector("#search-local");
 const searchButton = document.querySelector(".search-location-btn");
@@ -61,6 +61,7 @@ locationInput.addEventListener("keydown", async (e) => {
 
 switchUnitBtn.addEventListener("click", (e) => {
   switchUnits();
+  updateCurrentUnit(getState().unit);
 });
 
 async function getLocationData(location) {
