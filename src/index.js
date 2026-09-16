@@ -46,8 +46,12 @@ function getLocation() {
 }
 
 // Event listeners
-searchButton.addEventListener("click", async () => {
-  if (!checkLocationInput()) return;
+searchButton.addEventListener("click", async (e) => {
+  if (!checkLocationInput()) {
+    locationInput.reportValidity();
+    e.preventDefault();
+    return;
+  }
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
@@ -55,9 +59,18 @@ searchButton.addEventListener("click", async () => {
 
 locationInput.addEventListener("keydown", async (e) => {
   if (e.key !== "Enter") return;
+  if (!checkLocationInput()) {
+    locationInput.reportValidity();
+    e.preventDefault();
+    return;
+  }
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
+});
+
+locationInput.addEventListener("input", () => {
+  checkLocationInput();
 });
 
 switchUnitBtn.addEventListener("click", (e) => {
@@ -92,13 +105,12 @@ async function getLocationData(location) {
 }
 
 function checkLocationInput() {
-  if (!locationInput.validity.valid) {
+  if (locationInput.validity.valueMissing) {
     locationInput.setCustomValidity("What's the location?");
     return false;
-  } else {
-    locationInput.setCustomValidity("");
-    return true;
   }
+  locationInput.setCustomValidity("");
+  return true;
 }
 
 function switchUnits() {
