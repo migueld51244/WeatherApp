@@ -47,7 +47,7 @@ function getLocation() {
 
 // Event listeners
 searchButton.addEventListener("click", async () => {
-  if (!setCustomValidity()) return;
+  if (!checkLocationInput()) return;
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
@@ -91,7 +91,7 @@ async function getLocationData(location) {
   }
 }
 
-function setCustomValidity() {
+function checkLocationInput() {
   if (!locationInput.validity.valid) {
     locationInput.setCustomValidity("What's the location?");
     return false;
