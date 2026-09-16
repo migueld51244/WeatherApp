@@ -260,3 +260,10 @@ label[for="search-local"] {
   margin-top: clamp(1.2rem, 3vw, 4rem);
   font-weight: 500;
 }
+
+.search-icon-btn {
+  width: 45px;
+  height: 45px;
+  margin-top: 20px;
+  transform: translateX(-20px) translateY(3px);
+}
