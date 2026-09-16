@@ -28,6 +28,9 @@ const cloudCover = document.querySelector(".cloud-cover-p");
 
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 
+// Loading template
+const loadingTemplate = document.querySelector(".loading-screen-template");
+
 const state = {
   data: undefined,
   unit: "celsius",
@@ -42,7 +45,6 @@ function getLocation() {
   return encodeURIComponent(location);
 }
 
-
 // Event listeners
 searchButton.addEventListener("click", async () => {
   const location = getLocation();
@@ -51,7 +53,7 @@ searchButton.addEventListener("click", async () => {
 });
 
 locationInput.addEventListener("keydown", async (e) => {
-  if(e.key !== "Enter") return;
+  if (e.key !== "Enter") return;
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
@@ -63,6 +65,9 @@ switchUnitBtn.addEventListener("click", (e) => {
 
 async function getLocationData(location) {
   errorMessage.textContent = "";
+  // Display loading animation
+  const loadingScreen = loadingTemplate.content.cloneNode(true);
+  document.body.append(loadingScreen);
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=3C2DHMPPBS5NBWY7NCA4C7LTT&unitGroup=metric`,
@@ -76,6 +81,8 @@ async function getLocationData(location) {
     return weatherData;
   } catch (error) {
     console.error(error);
+  } finally {
+    document.querySelector(".loading-screen-container").remove();
   }
 }
 
