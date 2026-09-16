@@ -15,6 +15,8 @@ const forecastArea = document.querySelector(".forecast-wrapper");
 const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 const currentUnitP = document.querySelector(".current-unit-p");
+const pageContent = document.querySelector(".page-content");
+const introMessage = document.querySelector(".intro-message");
 
 const iconNames = {
   "clear-day": "clear-day.png",
@@ -152,9 +154,12 @@ function updateCurrentUnit(unit) {
 
 function render(data) {
   if (data === undefined) {
-    document.querySelector(".page-content").style.display = "none";
-    
+    pageContent.style.display = "none";
+    introMessage.textContent = "Search for a city to get started";
+    return;
   }
+  introMessage.textContent = "";
+  pageContent.style.display = "block";
   generateForecast(data);
   generateFullDayForecast(data);
   generateWeatherDetails(data);
