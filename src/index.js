@@ -47,6 +47,7 @@ function getLocation() {
 
 // Event listeners
 searchButton.addEventListener("click", async () => {
+  if (!setCustomValidity()) return;
   const location = getLocation();
   getState().data = await getLocationData(location);
   render(getState().data);
@@ -87,6 +88,16 @@ async function getLocationData(location) {
     console.error(error);
   } finally {
     document.querySelector(".loading-screen-container").remove();
+  }
+}
+
+function setCustomValidity() {
+  if (!locationInput.validity.valid) {
+    locationInput.setCustomValidity("What's the location?");
+    return false;
+  } else {
+    locationInput.setCustomValidity("");
+    return true;
   }
 }
 
