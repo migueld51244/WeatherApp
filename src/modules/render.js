@@ -149,7 +149,7 @@ function populateLocationDescription(data) {
 }
 
 function updateCurrentUnit(unit) {
-  currentUnitP.textContent = `Current unit: ${unit}`;
+  currentUnitP.textContent = `Current unit: ${unit.charAt(0).toUpperCase(1) + unit.slice(1)} `;
 }
 
 function render(data) {
