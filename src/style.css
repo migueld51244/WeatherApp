@@ -200,8 +200,12 @@ label[for="search-local"] {
     height: 100px;
   }
   display: flex;
+  transition: 300ms ease-out;
 }
 
+.day-wrapper:hover {
+  transform: translateY(-5px);
+}
 .day-info-wrapper {
   display: flex;
   flex-direction: column;
