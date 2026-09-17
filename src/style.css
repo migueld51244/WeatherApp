@@ -126,6 +126,7 @@ label[for="search-local"] {
   content: "◉";
   color: green;
   font-size: 2rem;
+  padding-right: 5px;
 }
 
 .details-wrapper {
