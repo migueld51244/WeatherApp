@@ -13,6 +13,7 @@ body {
 }
 
 header {
+  position: relative;
   display: flex;
   background-color: rgba(101, 161, 229, 0.9);
   padding: 1rem;
@@ -32,6 +33,17 @@ header button {
   cursor: pointer;
   background-color: transparent;
   border: none;
+}
+
+.current-unit-p {
+  display: block;
+}
+
+.temp-display {
+  font-size: 1.1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-container {
@@ -68,7 +80,15 @@ label[for="search-local"] {
 .page-title-controls {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2.2vw, 3rem)
+  gap: clamp(1rem, 2.2vw, 3rem);
+}
+
+.unit-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.7rem;
 }
 
 .unit-switcher-btn {
