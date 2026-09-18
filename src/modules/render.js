@@ -155,7 +155,7 @@ function updateCurrentUnit(unit) {
 function render(data) {
   if (data === undefined) {
     pageContent.style.display = "none";
-    introMessage.textContent = "Search for a city to get started";
+    introMessage.textContent = "Search for a city to get started!";
     return;
   }
   introMessage.textContent = "";
