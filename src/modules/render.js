@@ -35,6 +35,11 @@ async function retrieveIcon(iconName, image) {
   image.src = icon.default;
 }
 
+async function retrieveBackground(bgName) {
+  const icon = await import(`../assets/images/backgrounds/${bgName}-bg.jpg`);
+  document.body.style.backgroundImage = `url(${icon.default})`;
+}
+
 function getIcon(name, image) {
   retrieveIcon(iconNames[name], image);
 }
@@ -152,6 +157,11 @@ function updateCurrentUnit(unit) {
   currentUnitP.textContent = `Current unit: ${unit.charAt(0).toUpperCase(1) + unit.slice(1)} `;
 }
 
+function getWallpaper(data) {
+  const wallpaperName = data.currentConditions.icon;
+  retrieveBackground(wallpaperName);
+}
+
 function render(data) {
   if (data === undefined) {
     pageContent.style.display = "none";
@@ -160,6 +170,7 @@ function render(data) {
   }
   introMessage.textContent = "";
   pageContent.style.display = "block";
+  getWallpaper(data);
   generateForecast(data);
   generateFullDayForecast(data);
   generateWeatherDetails(data);
