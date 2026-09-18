@@ -26,17 +26,29 @@
             ><span class="yellow-word">Light</span>
           </h1>
         </a>
-        <p class="current-unit-p"></p>
-        <button class="unit-switcher-btn" type="button">Switch Units</button>
+        <div class="unit-control">
+          <p class="current-unit-p"></p>
+          <button class="unit-switcher-btn" type="button">Switch Units</button>
+        </div>
       </div>
       <form class="search-container">
         <div class="search-box">
           <label for="search-local">Search for a city</label>
-          <input type="text" name="location" id="search-local" required placeholder="Ex: London"/>
+          <input
+            type="text"
+            name="location"
+            id="search-local"
+            required
+            placeholder="Ex: London"
+          />
           <span class="error-message"></span>
         </div>
         <button type="submit" class="search-location-btn">
-          <img class="search-icon-btn" src="./assets/images/magnifier.png" alt="" />
+          <img
+            class="search-icon-btn"
+            src="./assets/images/magnifier.png"
+            alt=""
+          />
         </button>
       </form>
     </header>

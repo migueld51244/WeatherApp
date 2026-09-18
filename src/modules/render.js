@@ -163,6 +163,7 @@ function getWallpaper(data) {
 }
 
 function render(data) {
+  updateCurrentUnit(getState().unit);
   if (data === undefined) {
     pageContent.style.display = "none";
     introMessage.textContent = "Search for a city to get started!";
