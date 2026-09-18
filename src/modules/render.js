@@ -114,12 +114,12 @@ function generateWeatherDetails(data) {
   sunset.textContent = `Sunset at: ${data.currentConditions.sunset}`;
   sunrise.textContent = `Sunrise at: ${data.currentConditions.sunrise}`;
   timezone.textContent = `Timezone: ${data.timezone}`;
-  windDir.textContent = `Wind Direction: ${data.currentConditions.winddir} º`;
-  windGust.textContent = `Wind Gust: ${data.currentConditions.windgust} km/s`;
-  uvIndex.textContent = `UV Index: ${data.currentConditions.uvindex}`;
-  visibility.textContent = `Visibility: ${data.currentConditions.visibility} km`;
-  pressure.textContent = `Pressure: ${data.currentConditions.pressure} hPa`;
-  cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover} %`;
+  windDir.textContent = `Wind Direction: ${data.currentConditions.winddir ?? "Unknown"} º`;
+  windGust.textContent = `Wind Gust: ${data.currentConditions.windgust ?? "Unknown"} km/s`;
+  uvIndex.textContent = `UV Index: ${data.currentConditions.uvindex ?? "Unknown"}`;
+  visibility.textContent = `Visibility: ${data.currentConditions.visibility ?? "Unknown"} km`;
+  pressure.textContent = `Pressure: ${data.currentConditions.pressure ?? "Unknown"} hPa`;
+  cloudCover.textContent = `Cloud cover: ${data.currentConditions.cloudcover ?? "Unknown"} %`;
 }
 
 function populateOverallStatus(data) {
@@ -130,8 +130,8 @@ function populateOverallStatus(data) {
 
 function populateDetailedStatus(data) {
   if (!data) return;
-  humidityP.textContent = `Humidity: ${data.currentConditions.humidity} %`;
-  windP.textContent = `Wind Speed: ${data.currentConditions.windspeed} km/h`;
+  humidityP.textContent = `Humidity: ${data.currentConditions.humidity ?? "Unknown"} %`;
+  windP.textContent = `Wind Speed: ${data.currentConditions.windspeed ?? "Unknown"} km/h`;
   timeP.textContent = `Time: ${data.currentConditions.datetime}`;
 }
 
