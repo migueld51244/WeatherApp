@@ -7,11 +7,14 @@
 body {
   font-family: "DM Sans", "Inter", sans-serif;
   background-color: #fafafa;
+  background-image: url("./assets/images/backgrounds/welcome-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header {
   display: flex;
-  background-color: #65a1e5;
+  background-color: rgba(101, 161, 229, 0.9);
   padding: 1rem;
   justify-content: space-around;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
@@ -142,6 +145,7 @@ label[for="search-local"] {
   margin-left: 2vw;
   font-size: clamp(1rem, 1.6vw, 3rem);
   font-weight: 500;
+  color: white;
 }
 
 .forecast-wrapper {
