@@ -14,7 +14,7 @@ const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 const forecastArea = document.querySelector(".forecast-wrapper");
 const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
-const currentUnitP = document.querySelector(".current-unit-p");
+const currentUnitP = document.querySelector(".current-unit");
 const pageContent = document.querySelector(".page-content");
 const introMessage = document.querySelector(".intro-message");
 
