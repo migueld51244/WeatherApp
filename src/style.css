@@ -15,7 +15,7 @@ body {
 header {
   position: relative;
   display: flex;
-  background-color: rgba(101, 161, 229, 0.9);
+  background-color: rgba(101, 161, 229, 0.87);
   padding: 1rem;
   justify-content: space-around;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
@@ -35,8 +35,10 @@ header button {
   border: none;
 }
 
-.current-unit-p {
+.current-unit {
   display: block;
+  color: rgb(235, 246, 116);
+  font-weight: 600;
 }
 
 .temp-display {
@@ -116,7 +118,7 @@ label[for="search-local"] {
 }
 
 .container {
-  background-color: rgb(198, 190, 190);
+  background-color: rgba(161, 197, 176, 0.83);
   margin: 2vw;
   padding: 3vw;
   border-radius: 10px;
@@ -155,7 +157,7 @@ label[for="search-local"] {
   margin: 2vw;
   border-radius: 10px;
   height: 10%;
-  background-color: #d2c0c0;
+  background-color: #c39d9d;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -168,7 +170,6 @@ label[for="search-local"] {
 }
 
 .forecast-wrapper {
-  background-color: #a5a0b3;
   margin: 2vw;
   border-radius: 10px;
   min-height: 8vw;
@@ -211,6 +212,7 @@ label[for="search-local"] {
     width: 100px;
   }
   border-radius: 10px;
+  scrollbar-color: rgba(32, 55, 71, 0.67) transparent;
 }
 
 .day-wrapper {
