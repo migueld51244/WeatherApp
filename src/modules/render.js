@@ -10,14 +10,13 @@ const temperatureP = document.querySelector(".temperature-p");
 const humidityP = document.querySelector(".humidity-p");
 const windP = document.querySelector(".wind-p");
 const timeP = document.querySelector(".time-p");
-const switchUnitBtn = document.querySelector("button.unit-switcher-btn");
 const forecastArea = document.querySelector(".forecast-wrapper");
-const errorMessage = document.querySelector(".error-message");
 const fullDayWrapper = document.querySelector(".full-day-wrapper");
 const currentUnitP = document.querySelector(".current-unit");
 const pageContent = document.querySelector(".page-content");
 const introMessage = document.querySelector(".intro-message");
 
+// Icons map
 const iconNames = {
   "clear-day": "clear-day.png",
   "clear-night": "clear-night.png",
@@ -30,18 +29,21 @@ const iconNames = {
   wind: "wind.png",
 };
 
+// Import icon
 async function retrieveIcon(iconName, image) {
   const icon = await import(`../assets/images/${iconName}`);
   image.src = icon.default;
 }
 
+// Set icon
+function getIcon(name, image) {
+  retrieveIcon(iconNames[name], image);
+}
+
+// Change background
 async function retrieveBackground(bgName) {
   const icon = await import(`../assets/images/backgrounds/${bgName}-bg.jpg`);
   document.body.style.backgroundImage = `url(${icon.default})`;
-}
-
-function getIcon(name, image) {
-  retrieveIcon(iconNames[name], image);
 }
 
 // Weather details
@@ -115,7 +117,6 @@ function generateFullDayForecast(data) {
 
 function generateWeatherDetails(data) {
   if (!data) return;
-
   sunset.textContent = `Sunset at: ${data.currentConditions.sunset}`;
   sunrise.textContent = `Sunrise at: ${data.currentConditions.sunrise}`;
   timezone.textContent = `Timezone: ${data.timezone}`;
@@ -164,6 +165,7 @@ function getWallpaper(data) {
 
 function render(data) {
   updateCurrentUnit(getState().unit);
+  // Handle empty state
   if (data === undefined) {
     pageContent.style.display = "none";
     introMessage.textContent = "Search for a city to get started!";
@@ -171,6 +173,8 @@ function render(data) {
   }
   introMessage.textContent = "";
   pageContent.style.display = "block";
+
+  // Continue rendering
   getWallpaper(data);
   generateForecast(data);
   generateFullDayForecast(data);

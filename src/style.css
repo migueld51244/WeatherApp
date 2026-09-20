@@ -1,24 +1,15 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: "DM Sans", "Inter", sans-serif;
   background-color: #fafafa;
   background-image: url("./assets/images/backgrounds/welcome-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-header {
-  position: relative;
-  display: flex;
-  background-color: rgba(101, 161, 229, 0.87);
-  padding: 1rem;
-  justify-content: space-around;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  font-family: "DM Sans", "Inter", sans-serif;
 }
 
 button {
@@ -30,9 +21,54 @@ a {
 }
 
 header button {
-  cursor: pointer;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+/* Header and controls */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background-color: rgba(101, 161, 229, 0.87);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-title {
+  font-size: 3.1rem;
+  font-weight: 800;
+}
+
+.page-title-controls {
+  display: flex;
+  gap: clamp(1rem, 2.2vw, 3rem);
+  align-items: center;
+}
+
+.unit-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0.7rem;
+}
+
+.unit-switcher-btn {
+  color: black;
+  border: 2px solid blue;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background-color: #b2d7fa;
+  transition: 200ms ease-in;
+}
+
+.unit-switcher-btn:hover {
+  color: white;
+  border: 2px solid blue;
+  background-color: rgb(116, 116, 170);
 }
 
 .current-unit {
@@ -42,12 +78,21 @@ header button {
 }
 
 .temp-display {
-  font-size: 1.1rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
+.blue-word {
+  color: rgb(71, 71, 255);
+}
+
+.yellow-word {
+  color: rgb(255, 255, 99);
+}
+
+/* Search */
 .search-container {
   display: flex;
   align-items: center;
@@ -66,57 +111,22 @@ label[for="search-local"] {
 }
 
 #search-local {
-  padding: 0.5rem;
-  outline: none;
   width: 70%;
+  padding: 0.5rem;
   border: 2px solid lightblue;
   border-radius: 10px;
+  outline: none;
   font-size: 1.2rem;
 }
 
-.page-title {
-  font-size: 3.1rem;
-  font-weight: 800;
+.search-icon-btn {
+  width: 45px;
+  height: 45px;
+  margin-top: 20px;
+  transform: translateX(-20px) translateY(3px);
 }
 
-.page-title-controls {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.2vw, 3rem);
-}
-
-.unit-control {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  margin: 0.7rem;
-}
-
-.unit-switcher-btn {
-  color: black;
-  padding: 1rem;
-  border: 2px solid blue;
-  font-size: 0.9rem;
-  border-radius: 20px;
-  transition: 200ms ease-in;
-  background-color: #b2d7fa;
-}
-
-.unit-switcher-btn:hover {
-  color: white;
-  border: 2px solid blue;
-  background-color: rgb(116, 116, 170);
-}
-
-.blue-word {
-  color: rgb(71, 71, 255);
-}
-
-.yellow-word {
-  color: rgb(255, 255, 99);
-}
-
+/* Current weather */
 .container {
   background-color: rgba(161, 197, 176, 0.83);
   margin: 2vw;
@@ -130,10 +140,10 @@ label[for="search-local"] {
 
 .location-info-container {
   display: flex;
+  align-items: center;
   justify-content: space-around;
   font-size: 1.5rem;
   font-weight: 400;
-  align-items: center;
 }
 
 .detailed-status {
@@ -153,6 +163,7 @@ label[for="search-local"] {
   padding-right: 5px;
 }
 
+/* Forecast details */
 .details-wrapper {
   margin: 2vw;
   border-radius: 10px;
@@ -208,11 +219,11 @@ label[for="search-local"] {
   background-color: #cebac5;
   display: flex;
   gap: 2vw;
+  border-radius: 10px;
+  scrollbar-color: rgba(32, 55, 71, 0.67) transparent;
   img {
     width: 100px;
   }
-  border-radius: 10px;
-  scrollbar-color: rgba(32, 55, 71, 0.67) transparent;
 }
 
 .day-wrapper {
@@ -222,16 +233,17 @@ label[for="search-local"] {
   border-radius: 15px;
   min-width: 4vw;
   min-height: 4vw;
+  display: flex;
+  transition: 300ms ease-out;
   img {
     height: 100px;
   }
-  display: flex;
-  transition: 300ms ease-out;
 }
 
 .day-wrapper:hover {
   transform: translateY(-5px);
 }
+
 .day-info-wrapper {
   display: flex;
   flex-direction: column;
@@ -249,7 +261,7 @@ label[for="search-local"] {
   text-align: center;
 }
 
-/* Loading screen */
+/* Status messages */
 .loading-screen-container {
   position: fixed;
   top: 0;
@@ -283,17 +295,10 @@ label[for="search-local"] {
   color: white;
 }
 
-/* Intro Message */
+/* Intro message */
 .intro-message {
   font-size: 3.25vw;
   text-align: center;
   margin-top: clamp(1.2rem, 3vw, 4rem);
   font-weight: 500;
-}
-
-.search-icon-btn {
-  width: 45px;
-  height: 45px;
-  margin-top: 20px;
-  transform: translateX(-20px) translateY(3px);
 }
