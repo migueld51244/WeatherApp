@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="32x32"
+      href="f32212558204ce4f3ffb.png"
+      type="image/png"
+    />
+    <title>Weather App</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <header>
+      <div class="page-title-controls">
+        <a href="index.html">
+          <h1 class="page-title">
+            <span class="blue-word">Sky</span
+            ><span class="yellow-word">Light</span>
+          </h1>
+        </a>
+        <div class="unit-control">
+          <p class="temp-display">
+            Current Unit:<span class="current-unit"></span>
+          </p>
+          <button class="unit-switcher-btn" type="button">Switch Units</button>
+        </div>
+      </div>
+      <form class="search-container">
+        <div class="search-box">
+          <label for="search-local">Search for a city</label>
+          <input
+            type="text"
+            name="location"
+            id="search-local"
+            required
+            placeholder="Ex: London"
+          />
+          <span class="error-message"></span>
+        </div>
+        <button type="submit" class="search-location-btn">
+          <img
+            class="search-icon-btn"
+            src="9e8c296e42a200f8e534.png"
+            alt=""
+          />
+        </button>
+      </form>
+    </header>
+    <div class="page-content">
+      <main class="container">
+        <div class="location-info-container">
+          <div class="overall-status">
+            <img
+              class="status-icon"
+              src="b59ea4db6d563f880106.png"
+              alt=""
+              class="weather-status-icon"
+            />
+
+            <p class="temperature-p"></p>
+          </div>
+          <div class="detailed-status">
+            <p class="humidity-p"></p>
+            <p class="wind-p"></p>
+            <p class="time-p"></p>
+          </div>
+          <div class="location-description">
+            <p class="local"></p>
+            <p class="local-desc"></p>
+          </div>
+        </div>
+      </main>
+      <article class="day-details">
+        <span class="weather-details-headline headline">Weather Details</span>
+        <div class="details-wrapper">
+          <div class="info-wrapper">
+            <p class="sunset-p"></p>
+            <p class="sunrise-p"></p>
+            <p class="timezone-p"></p>
+          </div>
+          <div class="info-wrapper">
+            <p class="wind-dir-p"></p>
+            <p class="wind-gust-p"></p>
+            <p class="uv-index-p"></p>
+          </div>
+          <div class="info-wrapper">
+            <p class="visibility-p"></p>
+            <p class="pressure-p"></p>
+            <p class="cloud-cover-p"></p>
+          </div>
+        </div>
+      </article>
+      <article class="full-day-forecast">
+        <span class="full-day-headline headline">24-Hours Forecast</span>
+        <div class="full-day-wrapper"></div>
+      </article>
+      <article class="weeks-forecast">
+        <span class="multi-week-forecast-headline headline"
+          >15 Days Forecast</span
+        >
+        <div class="forecast-wrapper"></div>
+      </article>
+    </div>
+
+    <!-- Loading screen template -->
+    <template class="loading-screen-template">
+      <div class="loading-screen-container">
+        <div class="loading-screen">
+          <img
+            src="50d6d8bfe205db113353.gif"
+            alt="loading spinner gif"
+          />
+          <p class="loading-text">Loading...</p>
+        </div>
+      </div>
+    </template>
+    <p class="intro-message"></p>
+  </body>
+</html>
