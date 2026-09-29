@@ -34,6 +34,7 @@ The project includes a clean weather dashboard with a search field, detailed sta
 - Webpack
 - Visual Crossing API
 - date-fns
+- npm
 
 ## Project Structure
 
