@@ -92,4 +92,4 @@ This project was created as part of The Odin Project JavaScript curriculum and f
 
 ## License
 
-This project is for educational purposes and is not intended for commercial use.
+This project is for educational purposes and is not intended for commercial use. Student app.
