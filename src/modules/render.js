@@ -166,9 +166,12 @@ function getWallpaper(data) {
 function render(data) {
   updateCurrentUnit(getState().unit);
   // Handle empty state
-  if (data === undefined) {
+  if (data === null) {
     pageContent.style.display = "none";
     introMessage.textContent = "Search for a city to get started!";
+    return;
+  // Handle error when searching
+  } else if(data === undefined) {
     return;
   }
   introMessage.textContent = "";

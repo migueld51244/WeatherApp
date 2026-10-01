@@ -8,7 +8,7 @@ const errorMessage = document.querySelector(".error-message");
 
 // Control current weather data and unit
 const state = {
-  data: undefined,
+  data: null,
   unit: "celsius",
 };
 
